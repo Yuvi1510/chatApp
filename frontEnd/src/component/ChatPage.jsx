@@ -1,7 +1,71 @@
-import React from 'react'
+import React, { useState, useRef } from 'react'
 import { MdAttachFile, MdSend } from 'react-icons/md'
+import madara from "../assets/madara.jpg";
 
 const ChatPage = () => {
+
+  const [messages , setMessages] = useState([
+    {
+      content: "hello guys",
+      sender: "yuvraj"
+    },
+    {
+      content: "hello how are you",
+      sender: "dijaya"
+    },
+    {
+      content: "all mighty push",
+      sender: "pain"
+    },
+    {
+      content: "you are still so aanoying",
+      sender: "sasuke"
+    },
+    {
+      content: "hhhhhhhhhhhh",
+      sender: "yuvraj"
+    },
+    {
+      content: "i am the king",
+      sender: "kelly"
+    },
+    {
+      content: "i am the king",
+      sender: "kelly"
+    },
+    {
+      content: "i am the king",
+      sender: "kelly"
+    },
+    {
+      content: "i am the king",
+      sender: "kelly"
+    },
+    {
+      content: "i am the king",
+      sender: "kelly"
+    },
+    {
+      content: "i am the king",
+      sender: "kelly"
+    },
+    {
+      content: "i am the king",
+      sender: "kelly"
+    },
+    {
+      content: "i thought you are queen",
+      sender: "yuvraj"
+    },
+  ]);
+const [input, setInput] = useState("");
+const [stompClient, setStompClient] = useState(null)
+const [roomId, setRoomId] = useState("")
+const inputRef = useRef(null)
+const chatBoxRes = useRef(null);
+const [currentUser, setCurrentUser] = useState("yuvraj")
+
+
   return (
     <div >
         {/* header  */}
@@ -27,8 +91,23 @@ const ChatPage = () => {
       </header>
 
         {/* Content box  */}
-        <main className='pt-20 border h-screen'>
-            hi
+        <main className='py-20  h-screen '>
+           <div className='h-full w-2/3 mx-auto p-3  dark:bg-gray-700 overflow-auto px-6'>
+            {
+              messages?.map((message, index)=>{
+               return <div key={index} className={`flex ${currentUser == message.sender? "justify-end":"justify-start"} 
+               mb-3 `}>
+                  <div className='bg-purple-400 px-4 py-2 flex gap-1 rounded-2xl max-w-lg'>
+                    <img className='w-10 aspect-square rounded-full' src={madara} alt="" />
+                    <div>
+                    <h1 className='uppercase font-semibold mb-1/2'>{message.sender}</h1>
+                    <p>{message.content}</p>
+                    </div>
+                  </div>
+                </div>
+              })
+            }
+           </div>
         </main>
 
       {/* input msg container  */}
