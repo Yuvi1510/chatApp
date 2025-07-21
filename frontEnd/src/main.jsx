@@ -5,11 +5,14 @@ import App from './App.jsx'
 import { BrowserRouter } from 'react-router'
 import AppRoutes from './config/AppRoutes.jsx'
 import { Toaster } from 'react-hot-toast'
+import { ChatProvider } from './context/ChatContext.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <BrowserRouter>
+    <ChatProvider>
     <AppRoutes />
+    </ChatProvider>
     <Toaster/>
     </BrowserRouter>
   </StrictMode>,
